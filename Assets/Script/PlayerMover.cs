@@ -10,7 +10,7 @@ public class PlayerMover : MonoBehaviour
     public float angularSpeed = 5;
     void Update()
     {
-        if (Input.GetKey(KeyCode.UpArrow))
+        if ((Input.touches.Length > 0) || (Input.GetKey(KeyCode.UpArrow)))
         {
             MoveForward();
         }
@@ -21,10 +21,6 @@ public class PlayerMover : MonoBehaviour
         if (Input.GetKey(KeyCode.LeftArrow))
         {
             camera.transform.Rotate(Vector3.up * Time.deltaTime * angularSpeed * -1);
-        }
-        if (Input.touches.Length > 0)
-        {
-            MoveForward();
         }
     }
 
